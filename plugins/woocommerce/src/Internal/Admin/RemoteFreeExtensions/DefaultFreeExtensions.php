@@ -89,6 +89,7 @@ class DefaultFreeExtensions {
 						self::get_plugin( 'woocommerce-services:tax' ),
 						self::get_plugin( 'tiktok-for-business' ),
 						self::get_plugin( 'snapchat-for-woocommerce' ),
+						self::get_plugin( 'reddit-for-woocommerce' ),
 					)
 				),
 			),
@@ -463,6 +464,14 @@ class DefaultFreeExtensions {
 				'is_built_by_wc' => true,
 				'is_visible'     => true,
 			),
+			'reddit-for-woocommerce'        => array(
+				'name'           => __( 'Reddit Ads', 'woocommerce' ),
+				'description'    => __( 'Seamlessly sync your products and start Reddit Ads.', 'woocommerce' ),
+				'image_url'      => plugins_url( '/assets/images/core-profiler/logo-reddit.svg', WC_PLUGIN_FILE ),
+				'manage_url'     => 'admin.php?page=wc-admin&path=%2Freddit%2Fsetup',
+				'is_built_by_wc' => true,
+				'is_visible'     => true,
+			),
 		);
 
 		$plugin        = $plugins[ $slug ];
@@ -555,6 +564,13 @@ class DefaultFreeExtensions {
 				'image_url'        => plugins_url( '/assets/images/core-profiler/logo-snapchat.svg', WC_PLUGIN_FILE ),
 				'description'      => __( 'Reach an untapped audience on Snapchat and drive more sales.', 'woocommerce' ),
 				'learn_more_link'  => 'https://woocommerce.com/products/snapchat/?utm_source=storeprofiler&utm_medium=product&utm_campaign=freefeatures',
+				'install_priority' => 1,
+			),
+			'reddit-for-woocommerce'    => array(
+				'label'            => __( 'Find New Customers with Reddit Ads', 'woocommerce' ),
+				'image_url'        => plugins_url( '/assets/images/core-profiler/logo-reddit.svg', WC_PLUGIN_FILE ),
+				'description'      => __( 'Seamlessly sync your products and start Reddit Ads.', 'woocommerce' ),
+				'learn_more_link'  => 'https://woocommerce.com/products/reddit/?utm_source=storeprofiler&utm_medium=product&utm_campaign=freefeatures',
 				'install_priority' => 1,
 			),
 			'woocommerce-services:tax'  => array(
