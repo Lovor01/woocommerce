@@ -26,7 +26,7 @@ interface ProductCategoryControlProps {
 	/**
 	 * Callback to update the selected product categories.
 	 */
-	onChange: () => void;
+	onChange?: () => void;
 	/**
 	 * Whether or not the search control should be displayed in a compact way, so it occupies less space.
 	 */
@@ -47,6 +47,10 @@ interface ProductCategoryControlProps {
 	 * Whether or not to display the number of reviews for a category in the list.
 	 */
 	showReviewCount?: boolean;
+	/**
+	 * The type of input to use: 'text' for a text input, 'token' for a token field.
+	 */
+	type?: 'text' | 'token';
 }
 
 const ProductCategoryControl = ( {
@@ -60,6 +64,7 @@ const ProductCategoryControl = ( {
 	isCompact = false,
 	isSingle = false,
 	showReviewCount,
+	type = 'text',
 }: ProductCategoryControlProps & WithInjectedSearchedCategories ) => {
 	const renderItem = (
 		args: RenderItemArgs< ProductCategoryResponseItem >
@@ -178,6 +183,7 @@ const ProductCategoryControl = ( {
 				isCompact={ isCompact }
 				isHierarchical
 				isSingle={ isSingle }
+				type={ type }
 			/>
 			{ !! onOperatorChange && (
 				<div hidden={ selected.length < 2 }>

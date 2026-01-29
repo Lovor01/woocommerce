@@ -26,7 +26,7 @@ interface ProductBrandControlProps {
 	/**
 	 * Callback to update the selected product brands.
 	 */
-	onChange: () => void;
+	onChange?: () => void;
 	/**
 	 * Whether or not the search control should be displayed in a compact way, so it occupies less space.
 	 */
@@ -47,6 +47,10 @@ interface ProductBrandControlProps {
 	 * Whether or not to display the number of reviews for a brand in the list.
 	 */
 	showReviewCount?: boolean;
+	/**
+	 * The type of input to use: 'text' for a text input, 'token' for a token field.
+	 */
+	type?: 'text' | 'token';
 }
 
 const ProductBrandControl = ( {
@@ -60,6 +64,7 @@ const ProductBrandControl = ( {
 	isCompact = false,
 	isSingle = false,
 	showReviewCount,
+	type = 'text',
 }: ProductBrandControlProps & WithInjectedSearchedBrands ) => {
 	const renderItem = ( args: RenderItemArgs< ProductBrandResponseItem > ) => {
 		const { item, search, depth = 0 } = args;
@@ -176,6 +181,7 @@ const ProductBrandControl = ( {
 				isCompact={ isCompact }
 				isHierarchical
 				isSingle={ isSingle }
+				type={ type }
 			/>
 			{ !! onOperatorChange && (
 				<div hidden={ selected.length < 2 }>

@@ -26,6 +26,7 @@ const ProductTagControl = ( {
 	onOperatorChange,
 	operator = 'any',
 	selected,
+	type = 'text',
 }: ProductTagControlProps ): JSX.Element => {
 	const [ list, setList ] = useState< SearchListItemProps[] >( [] );
 	const [ loading, setLoading ] = useState( true );
@@ -93,6 +94,7 @@ const ProductTagControl = ( {
 				isCompact={ isCompact }
 				isHierarchical
 				isSingle={ false }
+				type={ type }
 			/>
 			{ !! onOperatorChange && (
 				<div hidden={ selected.length < 2 }>
