@@ -10,4 +10,8 @@ export type ProductTagControlProps = {
 	operator?: string;
 	// Selected tag ids.
 	selected: ( number | string )[];
+	/**
+	 * The type of input to use: 'text' for a text input, 'token' for a token field.
+	 */
+	type?: 'text' | 'token';
 };
