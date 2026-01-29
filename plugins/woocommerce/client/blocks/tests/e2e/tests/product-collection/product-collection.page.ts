@@ -674,6 +674,38 @@ class ProductCollectionPage {
 		await this.refreshLocators( 'editor' );
 	}
 
+	/**
+	 * Check a taxonomy term checkbox (categories, tags, brands).
+	 */
+	async checkTaxonomyTerm(
+		taxonomy: 'categories' | 'tags' | 'brands',
+		term: string
+	) {
+		const sidebarSettings = this.locateSidebarSettings();
+		const taxonomyContainer = sidebarSettings.locator(
+			`.woocommerce-product-${ taxonomy }`
+		);
+		await taxonomyContainer.waitFor();
+		await taxonomyContainer.getByText( term, { exact: true } ).check();
+		await this.refreshLocators( 'editor' );
+	}
+
+	/**
+	 * Uncheck a taxonomy term checkbox (categories, tags, brands).
+	 */
+	async uncheckTaxonomyTerm(
+		taxonomy: 'categories' | 'tags' | 'brands',
+		term: string
+	) {
+		const sidebarSettings = this.locateSidebarSettings();
+		const taxonomyContainer = sidebarSettings.locator(
+			`.woocommerce-product-${ taxonomy }`
+		);
+		await taxonomyContainer.waitFor();
+		await taxonomyContainer.getByText( term, { exact: true } ).uncheck();
+		await this.refreshLocators( 'editor' );
+	}
+
 	async setInheritQueryFromTemplate( inheritQueryFromTemplate: boolean ) {
 		const sidebarSettings = this.locateSidebarSettings();
 		const queryTypeLocator = sidebarSettings.locator(
